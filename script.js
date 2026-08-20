@@ -17,32 +17,38 @@ if (document.readyState === 'loading') {
   initAll();
 }
 
-/* Mobile nav toggle */
 function initNavToggle() {
-  const toggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('topnav');
-  if (!toggle || !nav) return;
+  const navToggle = document.getElementById('nav-toggle');
+  const topbar = document.querySelector('.topbar');
+  const mainNav = document.getElementById('main-nav');
+  if (!navToggle || !topbar || !mainNav) return;
 
   function closeNav() {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
+    topbar.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
   }
 
   function openNav() {
-    nav.classList.add('open');
-    toggle.setAttribute('aria-expanded', 'true');
+    topbar.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
   }
 
-  toggle.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    if (expanded) closeNav(); else openNav();
+  navToggle.addEventListener('click', () => {
+    if (topbar.classList.contains('open')) closeNav();
+    else openNav();
   });
 
-  // Close nav when a link is clicked
-  nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
+  // Close when a nav link is clicked (mobile)
+  mainNav.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 700) closeNav();
+    });
+  });
 
   // Close on Escape
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+  });
 }
 
 function initServiceSelection() {
