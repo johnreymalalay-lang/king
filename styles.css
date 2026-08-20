@@ -798,6 +798,71 @@ h1 {
   }
 }
 
+/* Image expander / lightbox styles */
+.image-expander {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.image-expander.open {
+  display: flex;
+}
+.expander-inner {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  width: min(1100px, 95%);
+  background: transparent;
+  display: grid;
+  gap: 1rem;
+}
+.expander-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: calc(92vh - 120px);
+}
+.expander-media img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+}
+.expander-copy {
+  color: rgba(255,255,255,0.9);
+  max-height: 180px;
+  overflow: auto;
+  font-size: 0.97rem;
+}
+.expander-close {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.expander-close:focus {
+  outline: 2px solid rgba(255,255,255,0.12);
+}
+
+@media (max-width: 560px) {
+  .expander-copy { display: none; }
+  .expander-media img { max-height: 70vh; }
+}
+
 /* Image expander panel (right-side detail view) */
 .expander-panel {
   position: fixed;

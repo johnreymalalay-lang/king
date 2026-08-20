@@ -69,8 +69,8 @@
 
           <article class="transformation-card">
             <div class="transformation-image">
-                <img src="yao-1.jpg" alt="Client transformation progress" />
-              </div>
+              <img src="yao(1).jpg" alt="Client transformation progress" />
+            </div>
             <div class="transformation-copy">
               <h3>Performance Progress</h3>
               <p>With a smarter approach to training and nutrition, this client stayed motivated and kept moving toward a stronger body and better results.</p>
@@ -87,37 +87,17 @@
       </div>
     </footer>
 
-    <!-- Image expander panel -->
-    <div id="image-expander" class="expander-panel" aria-hidden="true">
-      <button id="expander-close" class="expander-close" aria-label="Close">✕</button>
-      <div class="expander-inner">
+    <!-- Image expander / lightbox -->
+    <div id="image-expander" class="image-expander" aria-hidden="true">
+      <div class="expander-inner" role="dialog" aria-modal="true">
+        <button id="expander-close" class="expander-close" aria-label="Close image viewer">✕</button>
         <div class="expander-media">
-          <img id="expander-img" src="" alt="Expanded image" />
+          <img id="expander-img" src="" alt="" />
         </div>
-        <div id="expander-copy" class="expander-copy"></div>
+        <div id="expander-copy" class="expander-copy" aria-live="polite"></div>
       </div>
     </div>
+
     <script src="script.js"></script>
-    <script>
-      (function(){
-        const expander = document.getElementById('image-expander');
-        if (!expander) return;
-        const expImg = document.getElementById('expander-img');
-        const expCopy = document.getElementById('expander-copy');
-        const closeBtn = document.getElementById('expander-close');
-        function open(src, alt, html){ expImg.src = src; expImg.alt = alt || ''; expCopy.innerHTML = html || ''; document.body.style.overflow = 'hidden'; expander.classList.add('open'); expander.setAttribute('aria-hidden','false'); }
-        function close(){ expander.classList.remove('open'); expander.setAttribute('aria-hidden','true'); expImg.src = ''; document.body.style.overflow = ''; }
-        closeBtn.addEventListener('click', close);
-        expander.addEventListener('click', (e) => { if (e.target === expander) close(); });
-        document.querySelectorAll('.transformation-card img, .transformation-spotlight img').forEach((img) => {
-          img.style.cursor = 'zoom-in';
-          img.addEventListener('click', (e) => {
-            const card = img.closest('.transformation-card') || img.closest('.transformation-spotlight');
-            const copy = card && (card.querySelector('.transformation-copy') || card.querySelector('.spotlight-copy'));
-            open(img.src, img.alt, copy ? copy.innerHTML : '');
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
