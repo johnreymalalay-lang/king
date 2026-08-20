@@ -84,6 +84,40 @@ img {
   font-size: 0.95rem;
 }
 
+/* Nav toggle (hamburger) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #fff;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.nav-toggle .sr-only { position: absolute; left: -9999px; }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .topnav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 1rem;
+    background: rgba(5,7,8,0.98);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 9998;
+  }
+  .topnav.open { display: flex; }
+  .topnav a { display: block; }
+  .topbar { position: relative; }
+}
+
 .topnav a:hover {
   color: #fff;
 }

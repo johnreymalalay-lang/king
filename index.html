@@ -14,7 +14,8 @@
     <header class="page-header">
       <div class="topbar container">
         <a class="brand" href="#home">Coach John King</a>
-        <nav class="topnav">
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="topnav">☰<span class="sr-only">Menu</span></button>
+        <nav id="topnav" class="topnav" role="navigation">
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#services">Services</a>
@@ -22,7 +23,7 @@
           <a href="clients-transformation.html">Clients Transformation</a>
           <a href="contact.html">Contact</a>
         </nav>
-        <a></a> class="btn btn-ghost" href="contact.html">Schedule an Appointment</a>
+
       </div>
 
       <section class="hero container" id="home">
@@ -70,7 +71,7 @@
         <div class="about-card">
           <div class="about-card-inner">
             <div class="about-image">
-              <img src="Dan.jpg" alt="Coach John King" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+              <img src="image-removebg-preview.png" alt="Coach John King" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
               <div class="about-image-fallback">Coach image will appear here</div>
             </div>
           </div>

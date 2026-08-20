@@ -8,12 +8,41 @@ function initAll() {
   initContactServiceForm();
   initContactForm();
   initImageExpander();
+  initNavToggle();
 }
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initAll);
 } else {
   initAll();
+}
+
+/* Mobile nav toggle */
+function initNavToggle() {
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('topnav');
+  if (!toggle || !nav) return;
+
+  function closeNav() {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openNav() {
+    nav.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) closeNav(); else openNav();
+  });
+
+  // Close nav when a link is clicked
+  nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
 }
 
 function initServiceSelection() {
