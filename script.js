@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
   const yearElement = document.getElementById('year');
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactServiceForm();
   initContactForm();
   initImageExpander();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 function initServiceSelection() {
   const filterButtons = document.querySelectorAll('.service-filters .pill');
