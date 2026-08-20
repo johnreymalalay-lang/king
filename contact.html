@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Coach John King</title>
+    <meta
+      name="description"
+      content="Get in touch with Coach John King for personalized fitness coaching and consultations."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="topbar container">
+        <a class="brand" href="index.html">Coach John King</a>
+        <nav class="topnav">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="skills.html">Skills</a>
+          <a href="clients-transformation.html">Clients Transformation</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a class="btn btn-ghost" href="contact.html">Schedule an Appointment</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="contact" class="section container contact-section">
+        <div class="contact-header">
+          <h2>Get In Touch</h2>
+          <p class="contact-subtitle">Ready to discuss your fitness goals, personalized coaching, or wellness opportunities.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-form-box">
+            <h3>Send a Message</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your.email@example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Training Type</label>
+                <select id="service-select" name="service">
+                  <option value="Private Training">Private Training</option>
+                  <option value="Group Training">Group Training</option>
+                  <option value="Athletes Training">Athletes Training</option>
+                </select>
+              </div>
+
+              <div id="service-options" class="service-options">
+                <div class="service-fields" data-service="Private Training">
+                  <p class="field-note">Private Training is one-on-one coaching tailored to your goals.</p>
+                  <div class="form-group">
+                    <label>Session Focus</label>
+                    <select name="privateFocus">
+                      <option value="Strength">Strength</option>
+                      <option value="Muscle Growth">Muscle Growth</option>
+                      <option value="Mobility">Mobility</option>
+                      <option value="Endurance">Endurance</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="service-fields hidden" data-service="Group Training">
+                  <p class="field-note">Group Training is ideal for friends, coworkers, or workout buddies.</p>
+                  <div class="form-group">
+                    <label>Group Size</label>
+                    <select name="groupSize">
+                      <option value="2-5">2-5 people</option>
+                      <option value="6-10">6-10 people</option>
+                      <option value="10+">10+ people</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="service-fields hidden" data-service="Athletes Training">
+                  <p class="field-note">Athlete Training supports sport-specific programs and performance goals.</p>
+                  <div class="form-group">
+                    <label>Sport or Discipline</label>
+                    <input type="text" name="athleteSport" placeholder="e.g. basketball, track, football" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" placeholder="Tell me about your fitness goals or opportunity..." rows="6" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <div id="form-success" class="form-success hidden">Thanks! Your request has been received.</div>
+            </form>
+          </div>
+
+          <div class="contact-details-box">
+            <h3>Contact Details</h3>
+            <div class="detail-item">
+              <p class="detail-label">LOCATION</p>
+              <p class="detail-value">Bacolod City, Philippines</p>
+            </div>
+            <div class="detail-item">
+              <p class="detail-label">EMAIL</p>
+              <p class="detail-value"><a href="mailto:contact@coachjohnking.com">johnreymalalay@gmail.com</a></p>
+            </div>
+            <div class="detail-item">
+              <p class="detail-label">PHONE</p>
+              <p class="detail-value">+63 977 718 2164</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-consultation">
+          <p>Book a free consultation and we'll map out a coaching path that fits your goals and schedule.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Coach John King. All rights reserved.</p>
+        <p>Strength • Wellness • Results</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
