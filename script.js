@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceSelection();
   initContactServiceForm();
   initContactForm();
+  initImageExpander();
 });
 
 function initServiceSelection() {
@@ -140,4 +141,50 @@ function initContactForm() {
 
 function getQueryParam(name) {
   return new URLSearchParams(window.location.search).get(name);
+}
+
+/* Image expander (right-side detail preview) */
+function initImageExpander() {
+  const expander = document.getElementById('image-expander');
+  const expanderImg = document.getElementById('expander-img');
+  const expanderCopy = document.getElementById('expander-copy');
+  const closeBtn = document.getElementById('expander-close');
+  if (!expander || !expanderImg) return;
+
+  function openExpander(src, alt, htmlCopy) {
+    expanderImg.src = src;
+    expanderImg.alt = alt || '';
+    expanderCopy.innerHTML = htmlCopy || '';
+    document.body.style.overflow = 'hidden';
+    expander.classList.add('open');
+    expander.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeExpander() {
+    expander.classList.remove('open');
+    expander.setAttribute('aria-hidden', 'true');
+    expanderImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeExpander);
+  expander.addEventListener('click', (e) => {
+    if (e.target === expander) closeExpander();
+  });
+
+  // Attach to spotlight image and grid images
+  const cards = document.querySelectorAll('.transformation-card, .transformation-spotlight');
+  cards.forEach((card) => {
+    const img = card.querySelector('img');
+    if (!img) return;
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      let copyHtml = '';
+      // Prefer using nearby copy text
+      const copy = card.querySelector('.transformation-copy, .spotlight-copy');
+      if (copy) copyHtml = copy.innerHTML;
+      openExpander(img.src, img.alt, copyHtml);
+    });
+  });
 }
